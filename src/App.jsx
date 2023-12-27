@@ -46,15 +46,19 @@ function App() {
 
   useEffect(() => {
     if (fromCurrency != null && toCurrency != null) {
-      fetch(
-        `${BASE_URL}?access_key=${access_key}&source=${fromCurrency}&currencies=${toCurrency}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          if (data && data.quotes) {
-            setExhangeQuote(data.quotes[fromCurrency + toCurrency]);
-          }
-        });
+      if (fromCurrency === toCurrency) {
+        setExhangeQuote(1);
+      } else {
+        fetch(
+          `${BASE_URL}?access_key=${access_key}&source=${fromCurrency}&currencies=${toCurrency}`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data && data.quotes) {
+              setExhangeQuote(data.quotes[fromCurrency + toCurrency]);
+            }
+          });
+      }
     }
   }, [fromCurrency, toCurrency]);
 
