@@ -35,6 +35,12 @@ export default function CurrencyRow({
         className="input"
         value={amount || ""}
         onChange={onChangeAmount}
+        onKeyPress={(e) => {
+          // prevent non-numeric input
+          if (!/[0-9]/.test(e.key)) {
+            e.preventDefault();
+          }
+        }}
       />
       <Select
         value={options.find((option) => option.value === selectedCurrency)}
