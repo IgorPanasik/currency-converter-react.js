@@ -1,7 +1,6 @@
 .container-input {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
   gap: 10px;
 }
 
@@ -15,11 +14,11 @@
 }
 
 input {
-  outline: 1px solid rgb(65, 130, 250); /* Задайте цвет обводки по умолчанию */
+  outline: 1px solid rgb(95, 150, 253); /* Задайте цвет обводки по умолчанию */
 }
 
 input:focus,
 input:active {
-  outline: 2px solid rgb(65, 130, 250);
-  background: #ebfff5;
+  outline: 1px solid rgb(95, 150, 253);
+  background: #f8ecec;
 }
