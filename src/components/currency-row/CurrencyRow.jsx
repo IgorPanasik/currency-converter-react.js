@@ -51,6 +51,10 @@ export default function CurrencyRow({
             ...provided,
             cursor: "pointer",
           }),
+          dropdownIndicator: (provided) => ({
+            ...provided,
+            color: "rgb(95, 150, 253)", // Здесь укажите желаемый цвет
+          }),
         }}
       />
     </div>

@@ -14,11 +14,11 @@
 }
 
 input {
-  outline: 1px solid rgb(95, 150, 253); /* Задайте цвет обводки по умолчанию */
+  outline: 1px solid rgb(32, 61, 114); /* Задайте цвет обводки по умолчанию */
 }
 
 input:focus,
 input:active {
-  outline: 1px solid rgb(95, 150, 253);
+  outline: 1px solid rgb(77, 124, 211);
   background: #f8ecec;
 }
