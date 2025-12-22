@@ -1,0 +1,17 @@
+export const allowedCurrencies = [
+	'USD',
+	'EUR',
+	'JPY',
+	'GBP',
+	'AUD',
+	'CAD',
+	'CHF',
+	'CNY',
+	'SEK',
+	'NZD',
+	'BYN',
+	'RUB',
+	'INR',
+	'BRL',
+	'ZAR',
+];

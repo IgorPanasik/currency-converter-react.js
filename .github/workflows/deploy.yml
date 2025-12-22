@@ -1,0 +1,36 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Create .env file
+        run: |
+          echo "VITE_BASE_URL_OPENEX=${{ secrets.VITE_BASE_URL_OPENEX }}" >> .env
+          echo "VITE_OPENEX_KEY=${{ secrets.VITE_OPENEX_KEY }}" >> .env
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (vite build:prod)
+        run: npm run build:prod
+
+      - name: Deploy to GitHub Pages (gh-pages CLI)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run deploy

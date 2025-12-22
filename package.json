@@ -1,32 +1,34 @@
 {
-  "name": "currency-converter",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "countries-list": "^3.0.6",
-    "gh-pages": "^6.1.1",
-    "react": "^18.2.0",
-    "react-country-flag": "^3.1.0",
-    "react-dom": "^18.2.0",
-    "react-select": "^5.8.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react-swc": "^3.5.0",
-    "eslint": "^8.55.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
-    "vite": "^5.0.8"
-  }
+	"name": "currency-converter",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"deploy": "gh-pages -d dist",
+		"build:prod": "vite build",
+		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"countries-list": "^3.2.2",
+		"gh-pages": "^6.3.0",
+		"lucide-react": "^0.562.0",
+		"react": "^19.2.3",
+		"react-country-flag": "^3.1.0",
+		"react-dom": "^19.2.3",
+		"react-select": "^5.10.2"
+	},
+	"devDependencies": {
+		"@tailwindcss/vite": "^4.1.18",
+		"@types/react": "^19.2.7",
+		"@types/react-dom": "^19.2.3",
+		"@vitejs/plugin-react-swc": "^4.2.2",
+		"eslint": "^9.39.2",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react-hooks": "^7.0.1",
+		"eslint-plugin-react-refresh": "^0.4.26",
+		"tailwindcss": "^4.1.18",
+		"vite": "^7.3.0"
+	}
 }
