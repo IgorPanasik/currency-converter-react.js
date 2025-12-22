@@ -10,20 +10,14 @@ body {
 }
 
 .input {
-	@apply px-2 py-1 text-base rounded-[5px] border border-gray-300 outline-none transition-colors duration-300 ease-in;
-}
-
-input {
-	@apply outline outline-1 outline-[#203d72] bg-[#f8ecec];
-}
-
-input:focus,
-input:active {
-	@apply outline outline-1 outline-[#4d7cd3];
+	@apply px-2 py-1 text-base rounded-[5px] border border-gray-300 
+         transition-colors duration-300 ease-in bg-[#f8ecec]
+         outline outline-2 outline-[#0b44ad]
+         focus:outline-[#077c03] active:outline-[#077c03];
 }
 
 .btn-switch {
-	@apply inline-flex items-center justify-center px-6 py-2   bg-transparent;
+	@apply inline-flex items-center justify-center px-6 py-2 bg-transparent rounded-full transition-colors duration-300 cursor-pointer border-2 border-gray-400 hover:bg-gray-100 hover:border-green-700;
 }
 
 .container {
