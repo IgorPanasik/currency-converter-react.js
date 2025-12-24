@@ -32,6 +32,6 @@ The [Zod](https://github.com/colinhacks/zod) library has been added to the proje
 - [TailwindCSS](https://tailwindcss.com/)
 - [gh-pages](https://github.com/tschaub/gh-pages)
 - [Open Exchange Rates API](https://openexchangerates.org/)
-  [Zod](https://github.com/colinhacks/zod)
+- [Zod](https://github.com/colinhacks/zod)
 
 ---
