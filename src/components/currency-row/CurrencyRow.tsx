@@ -32,13 +32,16 @@ export default function CurrencyRow({
 	}));
 
 	return (
-		<div className='container-input'>
+		<div className='container-input flex flex-col gap-[10px] sm:flex-row sm:justify-between'>
 			<input
 				aria-label='Enter the amount'
 				type='text'
 				inputMode='numeric'
 				pattern='[0-9]*'
-				className='input'
+				className='px-2 py-1 text-base rounded-[5px] border border-gray-300
+             transition-colors duration-300 ease-in bg-[#f8ecec]
+             outline-2 outline-[#0b44ad]
+             focus:outline-[#077c03] active:outline-[#077c03]'
 				value={amount || ''}
 				onChange={onChangeAmount}
 				placeholder='1'

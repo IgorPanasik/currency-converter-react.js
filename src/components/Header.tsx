@@ -3,7 +3,7 @@ import { TrendingUp } from 'lucide-react';
 export const Header = () => {
 	return (
 		<header className='flex flex-col items-center'>
-			<h1 className='flex gap-2 text-4xl font-bold text-blue-500'>
+			<h1 className='flex gap-2 text-4xl font-bold text-blue-500 sm:text-3xl sm:leading-[1.3]'>
 				<TrendingUp color='green' size={45} />
 				Exchange
 			</h1>

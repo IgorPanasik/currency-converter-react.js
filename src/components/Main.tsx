@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
 import { allowedCurrencies } from '../data/data_curr.js';
+import { RatesSchema } from '../schemas/schemas.js';
 import { ButtonSwitch } from './ButtonSwitch.js';
 import CurrencyRow from './currency-row/CurrencyRow.jsx';
 
@@ -11,12 +12,19 @@ export const Main = () => {
 	const [currencyOptions, setCurrencyOptions] = useState<string[]>([]);
 	const [fromCurrency, setFromCurrency] = useState<string | undefined>();
 	const [toCurrency, setToCurrency] = useState<string | undefined>();
-	const [exchangeRate, setExchangeRate] = useState<number>(1);
 	const [inputAmount, setInputAmount] = useState<string>('');
 	const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
 	const [rates, setRates] = useState<Record<string, number>>({});
 
 	const amountNumber = useMemo(() => Number(inputAmount || '0'), [inputAmount]);
+
+	const exchangeRate = useMemo(() => {
+		if (!fromCurrency || !toCurrency) return 1;
+		if (!rates[fromCurrency] || !rates[toCurrency]) return 1;
+		return fromCurrency === toCurrency
+			? 1
+			: rates[toCurrency] / rates[fromCurrency];
+	}, [fromCurrency, toCurrency, rates]);
 
 	const fromAmount = useMemo(
 		() =>
@@ -25,6 +33,7 @@ export const Main = () => {
 				: Number((amountNumber / exchangeRate).toFixed(2)),
 		[amountNumber, amountInFromCurrency, exchangeRate],
 	);
+
 	const toAmount = useMemo(
 		() =>
 			amountInFromCurrency
@@ -38,6 +47,12 @@ export const Main = () => {
 			const res = await fetch(`${BASE_URL}/latest.json?app_id=${API_KEY}`);
 			const data = await res.json();
 
+			const parsed = RatesSchema.safeParse(data);
+			if (!parsed.success) {
+				console.error('Invalid API response', parsed.error);
+				return;
+			}
+
 			const filtered = allowedCurrencies.filter((c) => data.rates[c]);
 			setCurrencyOptions(filtered);
 			setRates(data.rates);
@@ -49,21 +64,6 @@ export const Main = () => {
 		}
 		loadRates();
 	}, []);
-
-	useEffect(() => {
-		if (
-			fromCurrency &&
-			toCurrency &&
-			rates[fromCurrency] &&
-			rates[toCurrency]
-		) {
-			setExchangeRate(
-				fromCurrency === toCurrency
-					? 1
-					: rates[toCurrency] / rates[fromCurrency],
-			);
-		}
-	}, [fromCurrency, toCurrency, rates]);
 
 	function handleAmountChange(
 		e: React.ChangeEvent<HTMLInputElement>,
